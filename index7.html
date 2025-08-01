@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Betting Surveillance Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      padding: 30px;
+    }
+    h2 {
+      color: #333;
+      margin-top: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    .flag-high {
+      background-color: #ffcccc;
+    }
+    .flag-medium {
+      background-color: #fff0b3;
+    }
+    .flag-low {
+      background-color: #ccffcc;
+    }
+    .tag {
+      padding: 3px 6px;
+      color: white;
+      border-radius: 3px;
+      font-size: 12px;
+    }
+    .tag.matching { background-color: #4CAF50; }
+    .tag.snipping { background-color: #FF9800; }
+    .tag.major { background-color: #f44336; }
+    .tag.group { background-color: #9c27b0; }
+    .tag.46w { background-color: #03A9F4; }
+    .filters {
+      margin: 20px 0;
+    }
+    .filters label {
+      margin-right: 15px;
+    }
+    .note {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cricket Betting Surveillance Dashboard</h1>
+    <p>Real-time Monitoring for Suspicious Betting Patterns</p>
+  </header>
+
+  <div class="container">
+    
+    <div class="filters">
+      <label><input type="checkbox" checked> Flagged Bets</label>
+      <label><input type="checkbox" checked> Avg Bets Comparison</label>
+      <label><input type="checkbox" checked> Group Betting Detection</label>
+    </div>
+
+    <h2>Match Odds Activity</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>MO</th>
+          <th>MO Bets</th>
+          <th>Avg Bets</th>
+          <th>Flagged Bets Avg</th>
+          <th>Status</th>
+          <th>Flags</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="flag-high">
+          <td>USR1023</td>
+          <td>12</td>
+          <td>450</td>
+          <td>₹800</td>
+          <td>₹6500</td>
+          <td><strong>Suspicious</strong></td>
+          <td><span class="tag.major">Major</span> <span class="tag.46w">4,6,W</span></td>
+        </tr>
+        <tr class="flag-medium">
+          <td>USR2311</td>
+          <td>8</td>
+          <td>200</td>
+          <td>₹300</td>
+          <td>₹950</td>
+          <td>Monitor</td>
+          <td><span class="tag.snipping">Snipping</span></td>
+        </tr>
+        <tr class="flag-low">
+          <td>USR5123</td>
+          <td>20</td>
+          <td>620</td>
+          <td>₹500</td>
+          <td>₹520</td>
+          <td>Clean</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Group Betting Detection</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Group ID</th>
+          <th>User IDs</th>
+          <th>Same IP</th>
+          <th>Same Device ID</th>
+          <th>Identical Bets (within 10s)</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="flag-high">
+          <td>GRP_456</td>
+          <td>USR1001, USR1002, USR1003</td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>3 Times</td>
+          <td><strong>Flagged - Group Betting</strong></td>
+        </tr>
+        <tr class="flag-medium">
+          <td>GRP_789</td>
+          <td>USR2010, USR2011</td>
+          <td>No</td>
+          <td>Yes</td>
+          <td>2 Times</td>
+          <td>Under Review</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Color Coding for Flagging</h2>
+    <ul>
+      <li><span class="tag 46w">4,6,W Events</span>: Same color for all (light blue)</li>
+      <li><span class="tag matching">Matching</span>: Green</li>
+      <li><span class="tag snipping">Snipping</span>: Orange</li>
+      <li><span class="tag major">Major</span>: Red</li>
+      <li><span class="tag group">Group Betting</span>: Purple</li>
+    </ul>
+
+    <div class="note">
+      <p>⚠️ If Flagged Bets Avg > Avg Bets → Suspicious activity suspected (possible cheating behavior).</p>
+      <p>Group betting is detected by IP address, device ID, and identical bets placed within 10s interval.</p>
+    </div>
+
+  </div>
+</body>
+</html>
