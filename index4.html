@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surveillance Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Additional style for modal transition */
+        #userProfileModal {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <div id="dashboard-container" class="min-h-screen bg-gray-50 p-6">
+      <div class="bg-gradient-to-r from-blue-900 to-purple-900 rounded-xl shadow-lg p-8 mb-8 text-white">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-4xl font-bold mb-2">Surveillance Dashboard</h1>
+            <p class="text-blue-200">Real-time fraud detection and betting pattern analysis</p>
+          </div>
+          <div class="flex items-center space-x-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-blue-300"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <div class="text-right">
+              <p class="text-2xl font-bold">89</p>
+              <p class="text-blue-200">Active Alerts</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <div class="flex space-x-2" id="timeframe-buttons">
+          <button data-period="1h" class="timeframe-btn px-4 py-2 rounded-lg font-medium bg-white text-gray-700 hover:bg-gray-100">1h</button>
+          <button data-period="24h" class="timeframe-btn px-4 py-2 rounded-lg font-medium bg-blue-600 text-white">24h</button>
+          <button data-period="7d" class="timeframe-btn px-4 py-2 rounded-lg font-medium bg-white text-gray-700 hover:bg-gray-100">7d</button>
+          <button data-period="30d" class="timeframe-btn px-4 py-2 rounded-lg font-medium bg-white text-gray-700 hover:bg-gray-100">30d</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4" style="border-left-color: #3B82F6;">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Total Users</p>
+                    <p class="text-3xl font-bold text-gray-900">15,247</p>
+                    <p class="text-sm text-gray-500 mt-1">Active in last 24h</p>
+                </div>
+                <div class="p-3 rounded-full" style="background-color: #3B82F620;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8" style="color: #3B82F6;"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-green-500 mr-1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <span class="text-sm text-green-600">+12% from yesterday</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4" style="border-left-color: #10B981;">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Total Bets</p>
+                    <p class="text-3xl font-bold text-gray-900">89,652</p>
+                    <p class="text-sm text-gray-500 mt-1">All markets combined</p>
+                </div>
+                <div class="p-3 rounded-full" style="background-color: #10B98120;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8" style="color: #10B981;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-green-500 mr-1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <span class="text-sm text-green-600">+8% from yesterday</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4" style="border-left-color: #F59E0B;">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Flagged Bets</p>
+                    <p class="text-3xl font-bold text-gray-900">1,247</p>
+                    <p class="text-sm text-gray-500 mt-1">1.4% of total</p>
+                </div>
+                <div class="p-3 rounded-full" style="background-color: #F59E0B20;">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8" style="color: #F59E0B;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-green-500 mr-1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <span class="text-sm text-green-600">+23% from yesterday</span>
+            </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg p-6 border-l-4" style="border-left-color: #EF4444;">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">Group Betting Alerts</p>
+                    <p class="text-3xl font-bold text-gray-900">23</p>
+                    <p class="text-sm text-gray-500 mt-1">Requires immediate attention</p>
+                </div>
+                <div class="p-3 rounded-full" style="background-color: #EF444420;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8" style="color: #EF4444;"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-green-500 mr-1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                <span class="text-sm text-green-600">+45% from yesterday</span>
+            </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <div class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-bold text-gray-900 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 mr-2 text-red-500"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              High-Risk Users
+            </h2>
+            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+              3 Active
+            </span>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr class="border-b border-gray-200">
+                  <th class="text-left py-3 px-2 font-semibold text-gray-700">User</th>
+                  <th class="text-left py-3 px-2 font-semibold text-gray-700">Total Bets</th>
+                  <th class="text-left py-3 px-2 font-semibold text-gray-700">Avg Size</th>
+                  <th class="text-left py-3 px-2 font-semibold text-gray-700">Flagged Avg</th>
+                  <th class="text-left py-3 px-2 font-semibold text-gray-700">Ratio</th>
+                  <th class="text-left py-3 px-2 font-semibold text-gray-700">Risk</th>
+                  <th class="text-left py-3 px-2 font-semibold text-gray-700">Action</th>
+                </tr>
+              </thead>
+              <tbody id="suspicious-users-table">
+                </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-blue-500"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              Betting Markets
+            </h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Match Odds (MO)</span>
+                <span class="font-bold text-gray-900">45,234</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Sessions</span>
+                <span class="font-bold text-gray-900">23,456</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Bookmaker</span>
+                <span class="font-bold text-gray-900">15,789</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Line Session</span>
+                <span class="font-bold text-gray-900">5,173</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-yellow-500"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              Detection Stats
+            </h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Avg Bet Size</span>
+                <span class="font-bold text-green-600">₹1247.5</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Flagged Ratio</span>
+                <span class="font-bold text-orange-600">1.4%</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">False Positives</span>
+                <span class="font-bold text-gray-900">3.2%</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Detection Rate</span>
+                <span class="font-bold text-blue-600">96.8%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-white rounded-xl shadow-lg p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-bold text-gray-900 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 mr-2 text-purple-500"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+            Group Betting Detection
+          </h2>
+          <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
+            2 Active Alerts
+          </span>
+        </div>
+        
+        <div id="group-betting-alerts" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            </div>
+      </div>
+
+      <div class="mt-8 bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 mr-2 text-green-500"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+          24-Hour Betting Activity Timeline
+        </h2>
+        
+        <div id="timeline-chart" class="h-64 flex items-end justify-between space-x-2">
+           </div>
+        
+        <div class="flex justify-center space-x-6 mt-4">
+          <div class="flex items-center"><div class="w-4 h-4 bg-green-500 rounded mr-2"></div><span class="text-sm text-gray-600">Normal Bets</span></div>
+          <div class="flex items-center"><div class="w-4 h-4 bg-yellow-500 rounded mr-2"></div><span class="text-sm text-gray-600">Flagged Bets</span></div>
+          <div class="flex items-center"><div class="w-4 h-4 bg-red-500 rounded mr-2"></div><span class="text-sm text-gray-600">Group Betting</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="userProfileModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden opacity-0">
+        </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const suspiciousUsers = [
+            { id: 'USR001', name: 'RajeshK_47', totalBets: 456, avgBetSize: 890.50, flaggedBets: 67, flaggedAvgSize: 3420.75, suspicionRatio: 3.84, riskLevel: 'HIGH', lastActivity: '2 hours ago', matchOdds: 234, sessions: 89, bookmaker: 133 },
+            { id: 'USR002', name: 'CricketFan_92', totalBets: 678, avgBetSize: 1205.25, flaggedBets: 23, flaggedAvgSize: 1890.40, suspicionRatio: 1.57, riskLevel: 'MEDIUM', lastActivity: '45 mins ago', matchOdds: 345, sessions: 201, bookmaker: 132 },
+            { id: 'USR003', name: 'Mumbai_Bet_King', totalBets: 234, avgBetSize: 2340.80, flaggedBets: 89, flaggedAvgSize: 7890.25, suspicionRatio: 3.37, riskLevel: 'CRITICAL', lastActivity: '12 mins ago', matchOdds: 123, sessions: 67, bookmaker: 44 }
+        ];
+
+        const groupBettingAlerts = [
+            { id: 'GRP001', users: ['RajeshK_47', 'CricketFan_92', 'BetMaster_33'], matchId: 'IND_vs_AUS_T20_001', betAmount: 5000, timeWindow: '8 seconds', commonFactor: 'Same IP Address', timestamp: '2025-08-01 14:23:45', riskScore: 95 },
+            { id: 'GRP002', users: ['Mumbai_Bet_King', 'Delhi_Pro_777', 'KKR_Fan_2024'], matchId: 'MI_vs_CSK_IPL_089', betAmount: 3500, timeWindow: '5 seconds', commonFactor: 'Same Device ID', timestamp: '2025-08-01 13:45:12', riskScore: 87 }
+        ];
+
+        const timeSeriesData = [
+            { time: '00:00', normalBets: 120, flaggedBets: 8, groupBets: 2 },
+            { time: '04:00', normalBets: 89, flaggedBets: 12, groupBets: 1 },
+            { time: '08:00', normalBets: 234, flaggedBets: 23, groupBets: 4 },
+            { time: '12:00', normalBets: 567, flaggedBets: 45, groupBets: 8 },
+            { time: '16:00', normalBets: 789, flaggedBets: 67, groupBets: 12 },
+            { time: '20:00', normalBets: 456, flaggedBets: 34, groupBets: 6 }
+        ];
+
+        // --- RENDER FUNCTIONS ---
+
+        function getRiskLevelClass(riskLevel) {
+            switch(riskLevel) {
+                case 'CRITICAL': return 'bg-red-200 text-red-800';
+                case 'HIGH': return 'bg-orange-200 text-orange-800';
+                default: return 'bg-yellow-200 text-yellow-800';
+            }
+        }
+
+        function renderSuspiciousUsers() {
+            const tableBody = document.getElementById('suspicious-users-table');
+            tableBody.innerHTML = suspiciousUsers.map(user => `
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                    <td class="py-4 px-2">
+                        <div>
+                            <p class="font-medium text-gray-900">${user.name}</p>
+                            <p class="text-sm text-gray-500">${user.id}</p>
+                        </div>
+                    </td>
+                    <td class="py-4 px-2 text-gray-700">${user.totalBets}</td>
+                    <td class="py-4 px-2 text-gray-700">₹${user.avgBetSize.toFixed(2)}</td>
+                    <td class="py-4 px-2 font-bold text-red-600">₹${user.flaggedAvgSize.toFixed(2)}</td>
+                    <td class="py-4 px-2">
+                        <span class="font-bold ${user.suspicionRatio > 2 ? 'text-red-600' : 'text-orange-600'}">${user.suspicionRatio}x</span>
+                    </td>
+                    <td class="py-4 px-2">
+                        <span class="px-2 py-1 rounded text-xs font-bold ${getRiskLevelClass(user.riskLevel)}">${user.riskLevel}</span>
+                    </td>
+                    <td class="py-4 px-2">
+                        <button data-userid="${user.id}" class="view-details-btn bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
+                            View Details
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderGroupAlerts() {
+            const container = document.getElementById('group-betting-alerts');
+            container.innerHTML = groupBettingAlerts.map(alert => `
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="font-bold text-red-900">Alert #${alert.id}</h3>
+                        <span class="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">Risk: ${alert.riskScore}%</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <p><span class="font-medium">Users:</span> ${alert.users.join(', ')}</p>
+                            <p><span class="font-medium">Match:</span> ${alert.matchId}</p>
+                            <p><span class="font-medium">Amount:</span> ₹${alert.betAmount}</p>
+                        </div>
+                        <div>
+                            <p><span class="font-medium">Time Window:</span> ${alert.timeWindow}</p>
+                            <p><span class="font-medium">Common Factor:</span> ${alert.commonFactor}</p>
+                            <p><span class="font-medium">Timestamp:</span> ${alert.timestamp}</p>
+                        </div>
+                    </div>
+                    <div class="mt-3 flex space-x-2">
+                        <button class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700">Investigate</button>
+                        <button class="bg-gray-600 text-white px-3 py-1 rounded text-sm hover:bg-gray-700">Flag Users</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function renderTimelineChart() {
+            const chart = document.getElementById('timeline-chart');
+            const maxVal = 800; // A reasonable max for scaling
+            chart.innerHTML = timeSeriesData.map(data => `
+                <div class="flex-1 flex flex-col items-center">
+                    <div class="w-full max-w-12 space-y-1 flex flex-col-reverse">
+                        <div class="bg-red-500 rounded-b" style="height: ${ (data.groupBets / maxVal) * 200 }px" title="Group Bets: ${data.groupBets}"></div>
+                        <div class="bg-yellow-500" style="height: ${ (data.flaggedBets / maxVal) * 200 }px" title="Flagged Bets: ${data.flaggedBets}"></div>
+                        <div class="bg-green-500 rounded-t" style="height: ${ (data.normalBets / maxVal) * 200 }px" title="Normal Bets: ${data.normalBets}"></div>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2">${data.time}</p>
+                </div>
+            `).join('');
+        }
+        
+        function renderModal(user) {
+            const modal = document.getElementById('userProfileModal');
+            const riskRatio = user.suspicionRatio;
+            const riskText = riskRatio > 2 ? 'HIGH RISK' : riskRatio > 1.5 ? 'MEDIUM RISK' : 'LOW RISK';
+            const riskColorClass = riskRatio > 2 ? 'text-red-600' : riskRatio > 1.5 ? 'text-orange-600' : 'text-green-600';
+            const progressBarClass = riskRatio > 2 ? 'bg-red-500' : riskRatio > 1.5 ? 'bg-orange-500' : 'bg-green-500';
+
+            modal.innerHTML = `
+                <div class="bg-white rounded-xl shadow-2xl p-8 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900">User Profile: ${user.name}</h2>
+                        <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-blue-50 p-4 rounded-lg"><h3 class="font-semibold text-blue-900 mb-2">Betting Activity</h3><p><span class="font-medium">Total Bets:</span> ${user.totalBets}</p><p><span class="font-medium">Match Odds:</span> ${user.matchOdds}</p><p><span class="font-medium">Sessions:</span> ${user.sessions}</p><p><span class="font-medium">Bookmaker:</span> ${user.bookmaker}</p></div>
+                        <div class="bg-yellow-50 p-4 rounded-lg"><h3 class="font-semibold text-yellow-900 mb-2">Financial Metrics</h3><p><span class="font-medium">Avg Bet Size:</span> ₹${user.avgBetSize.toFixed(2)}</p><p><span class="font-medium">Flagged Bets:</span> ${user.flaggedBets}</p><p><span class="font-medium">Flagged Avg:</span> ₹${user.flaggedAvgSize.toFixed(2)}</p></div>
+                        <div class="bg-red-50 p-4 rounded-lg"><h3 class="font-semibold text-red-900 mb-2">Risk Assessment</h3><p><span class="font-medium">Suspicion Ratio:</span> ${user.suspicionRatio}x</p><p><span class="font-medium">Risk Level:</span> <span class="ml-2 px-2 py-1 rounded text-xs font-bold ${getRiskLevelClass(user.riskLevel)}">${user.riskLevel}</span></p><p><span class="font-medium">Last Activity:</span> ${user.lastActivity}</p></div>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="font-semibold text-gray-900 mb-4">Fraud Detection Analysis</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between"><span>Flagged vs Average Bet Ratio</span><span class="font-bold ${riskColorClass}">${riskText}</span></div>
+                            <div class="w-full bg-gray-200 rounded-full h-3"><div class="h-3 rounded-full ${progressBarClass}" style="width: ${Math.min(riskRatio * 20, 100)}%"></div></div>
+                            <p class="text-sm text-gray-600">This user's flagged bets are ${user.suspicionRatio}x larger than their average bets, indicating potential suspicious activity.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10); // For transition
+            document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('userProfileModal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300); // Match transition duration
+        }
+
+
+        // --- EVENT LISTENERS ---
+        
+        document.getElementById('timeframe-buttons').addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                document.querySelectorAll('.timeframe-btn').forEach(btn => {
+                    btn.classList.remove('bg-blue-600', 'text-white');
+                    btn.classList.add('bg-white', 'text-gray-700', 'hover:bg-gray-100');
+                });
+                e.target.classList.add('bg-blue-600', 'text-white');
+                e.target.classList.remove('bg-white', 'text-gray-700', 'hover:bg-gray-100');
+            }
+        });
+
+        document.getElementById('suspicious-users-table').addEventListener('click', (e) => {
+            const button = e.target.closest('.view-details-btn');
+            if (button) {
+                const userId = button.dataset.userid;
+                const user = suspiciousUsers.find(u => u.id === userId);
+                if (user) {
+                    renderModal(user);
+                }
+            }
+        });
+
+        // --- INITIAL RENDER ---
+        renderSuspiciousUsers();
+        renderGroupAlerts();
+        renderTimelineChart();
+      });
+    </script>
+</body>
+</html>
