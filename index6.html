@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Cricket Betting Surveillance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.0/lucide.min.js" rel="stylesheet">
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen bg-gray-50 p-6">
+        <div class="bg-gradient-to-r from-blue-900 via-purple-900 to-pink-900 rounded-xl shadow-lg p-8 mb-8 text-white">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">Surveillance Dashboard</h1>
+                    <p class="text-blue-200">Multi-category fraud detection with real-time group betting analysis</p>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="text-center">
+                        <div class="flex items-center justify-center mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-yellow-300 animate-pulse mr-2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+                            <span class="text-3xl font-bold">8</span>
+                        </div>
+                        <p class="text-blue-200">Live Alerts</p>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-20 w-20 text-blue-300"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-gray-500"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+                        <select class="border border-gray-300 rounded px-3 py-2">
+                            <option value="1h">Last Hour</option>
+                            <option value="24h" selected>Last 24 Hours</option>
+                            <option value="7d">Last 7 Days</option>
+                            <option value="30d">Last 30 Days</option>
+                        </select>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-gray-500"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        <select class="border border-gray-300 rounded px-3 py-2">
+                            <option value="all">All Markets</option>
+                            <option value="matchOdds">Match Odds</option>
+                            <option value="sessions">Sessions</option>
+                            <option value="bookmaker">Bookmaker</option>
+                            <option value="tieEvents">Tie Events</option>
+                            <option value="lineSession">Line Session</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-gray-500"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                        <select class="border border-gray-300 rounded px-3 py-2">
+                            <option value="all">All Alerts</option>
+                            <option value="critical">Critical Only</option>
+                            <option value="groupBetting">Group Betting</option>
+                            <option value="major">Major Bets</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                        Refresh
+                    </button>
+                    <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Export
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 relative" style="border-left-color: #3B82F6;">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Total Users</p>
+                        <p class="text-3xl font-bold text-gray-900">18,547</p>
+                        <p class="text-sm text-gray-500 mt-1">Active monitored users</p>
+                    </div>
+                    <div class="p-3 rounded-full" style="background-color: #3B82F620;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8" style="color: #3B82F6;"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-green-500 mr-1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    <span class="text-sm text-green-600">+15% from yesterday</span>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 relative" style="border-left-color: #10B981;">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Total Bets (All Markets)</p>
+                        <p class="text-3xl font-bold text-gray-900">124,652</p>
+                        <p class="text-sm text-gray-500 mt-1">Cross-market detection</p>
+                    </div>
+                    <div class="p-3 rounded-full" style="background-color: #10B98120;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8" style="color: #10B981;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-green-500 mr-1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    <span class="text-sm text-green-600">+12% from yesterday</span>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 relative" style="border-left-color: #F59E0B;">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Flagged Bets</p>
+                        <p class="text-3xl font-bold text-gray-900">1,891</p>
+                        <p class="text-sm text-gray-500 mt-1">1.5% flag rate</p>
+                    </div>
+                    <div class="p-3 rounded-full" style="background-color: #F59E0B20;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8" style="color: #F59E0B;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-green-500 mr-1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    <span class="text-sm text-green-600">+28% from yesterday</span>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 relative" style="border-left-color: #EF4444;">
+                <div class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold animate-pulse">8</div>
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Group Betting Alerts</p>
+                        <p class="text-3xl font-bold text-gray-900">34</p>
+                        <p class="text-sm text-gray-500 mt-1">Multi-user coordination</p>
+                    </div>
+                    <div class="p-3 rounded-full" style="background-color: #EF444420;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8" style="color: #EF4444;"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-green-500 mr-1"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    <span class="text-sm text-green-600">+67% from yesterday</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 mr-2 text-purple-500"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                Color-Coded Flag Categories
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <div class="bg-white rounded-lg shadow-md p-4 border-l-4" style="border-left-color: #8B5CF6;">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-gray-900">4,6, Wicket Bets</h3>
+                            <p class="text-2xl font-bold mt-1" style="color: #8B5CF6;">234</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: #8B5CF620;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" style="color: #8B5CF6;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 border-l-4" style="border-left-color: #EF4444;">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Matching Bets</h3>
+                            <p class="text-2xl font-bold mt-1" style="color: #EF4444;">156</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: #EF444420;">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" style="color: #EF4444;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 border-l-4" style="border-left-color: #F59E0B;">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Snipping Bets</h3>
+                            <p class="text-2xl font-bold mt-1" style="color: #F59E0B;">89</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: #F59E0B20;">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" style="color: #F59E0B;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 border-l-4" style="border-left-color: #10B981;">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Major Bets</h3>
+                            <p class="text-2xl font-bold mt-1" style="color: #10B981;">67</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: #10B98120;">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" style="color: #10B981;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4 border-l-4" style="border-left-color: #EC4899;">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Group Betting</h3>
+                            <p class="text-2xl font-bold mt-1" style="color: #EC4899;">45</p>
+                        </div>
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: #EC489920;">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" style="color: #EC4899;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 mr-2 text-blue-500"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                Market-wise Surveillance Data
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-gray-900 capitalize mb-2">Match Odds</h3>
+                    <p class="text-2xl font-bold text-blue-600">52,341</p>
+                    <p class="text-sm text-gray-600">Total Bets</p>
+                    <p class="text-lg font-semibold text-red-600 mt-2">789</p>
+                    <p class="text-xs text-gray-500">Flagged (1.51%)</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-gray-900 capitalize mb-2">Sessions</h3>
+                    <p class="text-2xl font-bold text-blue-600">34,567</p>
+                    <p class="text-sm text-gray-600">Total Bets</p>
+                    <p class="text-lg font-semibold text-red-600 mt-2">456</p>
+                    <p class="text-xs text-gray-500">Flagged (1.32%)</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-gray-900 capitalize mb-2">Bookmaker</h3>
+                    <p class="text-2xl font-bold text-blue-600">23,456</p>
+                    <p class="text-sm text-gray-600">Total Bets</p>
+                    <p class="text-lg font-semibold text-red-600 mt-2">234</p>
+                    <p class="text-xs text-gray-500">Flagged (1.00%)</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-gray-900 capitalize mb-2">Tie Events</h3>
+                    <p class="text-2xl font-bold text-blue-600">8,934</p>
+                    <p class="text-sm text-gray-600">Total Bets</p>
+                    <p class="text-lg font-semibold text-red-600 mt-2">123</p>
+                    <p class="text-xs text-gray-500">Flagged (1.38%)</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-gray-900 capitalize mb-2">Completed Match</h3>
+                    <p class="text-2xl font-bold text-blue-600">4,567</p>
+                    <p class="text-sm text-gray-600">Total Bets</p>
+                    <p class="text-lg font-semibold text-red-600 mt-2">67</p>
+                    <p class="text-xs text-gray-500">Flagged (1.47%)</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-gray-900 capitalize mb-2">Line Session</h3>
+                    <p class="text-2xl font-bold text-blue-600">890</p>
+                    <p class="text-sm text-gray-600">Total Bets</p>
+                    <p class="text-lg font-semibold text-red-600 mt-2">22</p>
+                    <p class="text-xs text-gray-500">Flagged (2.47%)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            
+            <div class="lg:col-span-2 bg-white rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-gray-900 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 mr-2 text-red-500"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        High-Risk User Analysis
+                    </h2>
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                            3 Critical Users
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-gray-400"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="text-left py-3 px-2 font-semibold text-gray-700">User Details</th>
+                                <th class="text-left py-3 px-2 font-semibold text-gray-700">Betting Stats</th>
+                                <th class="text-left py-3 px-2 font-semibold text-gray-700">Flag Categories</th>
+                                <th class="text-left py-3 px-2 font-semibold text-gray-700">Risk Score</th>
+                                <th class="text-left py-3 px-2 font-semibold text-gray-700">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="py-4 px-2">
+                                    <div>
+                                        <p class="font-medium text-gray-900">CricketKing_77</p>
+                                        <p class="text-sm text-gray-500">USR001</p>
+                                        <p class="text-xs text-gray-400">IP: 192.168.1.100</p>
+                                        <p class="text-xs text-gray-400">Device: 789456</p>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="text-sm">
+                                        <p><span class="font-medium">Bets:</span> 567</p>
+                                        <p><span class="font-medium">Avg:</span> ₹1245.5</p>
+                                        <p class="text-red-600"><span class="font-medium">Flagged:</span> ₹4780.25</p>
+                                        <p class="font-bold">Ratio: 3.84x</p>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="flex flex-wrap gap-1">
+                                        <span class="px-2 py-1 rounded text-xs font-medium" style="background-color: #8B5CF620; color: #8B5CF6;">4,6,</span>
+                                        <span class="px-2 py-1 rounded text-xs font-medium" style="background-color: #10B98120; color: #10B981;">Major</span>
+                                        <span class="px-2 py-1 rounded text-xs font-medium" style="background-color: #EC489920; color: #EC4899;">Group</span>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="text-center">
+                                        <span class="px-3 py-1 rounded-full text-sm font-bold bg-red-200 text-red-800">
+                                            CRITICAL
+                                        </span>
+                                        <p class="text-xs text-gray-500 mt-1">3 mins ago</p>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="flex flex-col space-y-1">
+                                        <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
+                                            Deep Analysis
+                                        </button>
+                                        <button class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700">
+                                            Flag User
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="py-4 px-2">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Mumbai_Bettor_92</p>
+                                        <p class="text-sm text-gray-500">USR002</p>
+                                        <p class="text-xs text-gray-400">IP: 192.168.1.100</p>
+                                        <p class="text-xs text-gray-400">Device: 456123</p>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="text-sm">
+                                        <p><span class="font-medium">Bets:</span> 789</p>
+                                        <p><span class="font-medium">Avg:</span> ₹1456.25</p>
+                                        <p class="text-red-600"><span class="font-medium">Flagged:</span> ₹2890.4</p>
+                                        <p class="font-bold">Ratio: 1.98x</p>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="flex flex-wrap gap-1">
+                                        <span class="px-2 py-1 rounded text-xs font-medium" style="background-color: #EF444420; color: #EF4444;">Matching</span>
+                                        <span class="px-2 py-1 rounded text-xs font-medium" style="background-color: #F59E0B20; color: #F59E0B;">Snipping</span>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="text-center">
+                                        <span class="px-3 py-1 rounded-full text-sm font-bold bg-orange-200 text-orange-800">
+                                            HIGH
+                                        </span>
+                                        <p class="text-xs text-gray-500 mt-1">12 mins ago</p>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="flex flex-col space-y-1">
+                                        <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
+                                            Deep Analysis
+                                        </button>
+                                        <button class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700">
+                                            Flag User
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="py-4 px-2">
+                                    <div>
+                                        <p class="font-medium text-gray-900">Delhi_Pro_King</p>
+                                        <p class="text-sm text-gray-500">USR003</p>
+                                        <p class="text-xs text-gray-400">IP: 10.0.0.25</p>
+                                        <p class="text-xs text-gray-400">Device: 789456</p>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="text-sm">
+                                        <p><span class="font-medium">Bets:</span> 345</p>
+                                        <p><span class="font-medium">Avg:</span> ₹2890.8</p>
+                                        <p class="text-red-600"><span class="font-medium">Flagged:</span> ₹8967.25</p>
+                                        <p class="font-bold">Ratio: 3.10x</p>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="flex flex-wrap gap-1">
+                                        <span class="px-2 py-1 rounded text-xs font-medium" style="background-color: #8B5CF620; color: #8B5CF6;">4,6,</span>
+                                        <span class="px-2 py-1 rounded text-xs font-medium" style="background-color: #10B98120; color: #10B981;">Major</span>
+                                        <span class="px-2 py-1 rounded text-xs font-medium" style="background-color: #EF444420; color: #EF4444;">Matching</span>
+                                        <span class="px-2 py-1 rounded text-xs bg-gray-200 text-gray-600">+1</span>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="text-center">
+                                        <span class="px-3 py-1 rounded-full text-sm font-bold bg-red-200 text-red-800">
+                                            CRITICAL
+                                        </span>
+                                        <p class="text-xs text-gray-500 mt-1">5 mins ago</p>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-2">
+                                    <div class="flex flex-col space-y-1">
+                                        <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
+                                            Deep Analysis
+                                        </button>
+                                        <button class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700">
+                                            Flag User
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-red-500 animate-pulse"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+                        Live Alerts
+                    </h3>
+                    <div class="space-y-3 max-h-64 overflow-y-auto">
+                        <div class="p-3 rounded-lg border-l-4 bg-red-50 border-red-500">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="font-semibold text-sm">Group Betting</p>
+                                    <p class="text-xs text-gray-600 mt-1">3 users placed identical bets within 5 seconds</p>
+                                </div>
+                                <span class="text-xs text-gray-500">2 mins ago</span>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-lg border-l-4 bg-orange-50 border-orange-500">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="font-semibold text-sm">Major Bet</p>
+                                    <p class="text-xs text-gray-600 mt-1">Single bet of ₹50,000 flagged for review</p>
+                                </div>
+                                <span class="text-xs text-gray-500">4 mins ago</span>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-lg border-l-4 bg-yellow-50 border-yellow-500">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="font-semibold text-sm">Wicket Snipe</p>
+                                    <p class="text-xs text-gray-600 mt-1">Suspicious wicket timing bet detected</p>
+                                </div>
+                                <span class="text-xs text-gray-500">6 mins ago</span>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-lg border-l-4 bg-orange-50 border-orange-500">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <p class="font-semibold text-sm">IP Clustering</p>
+                                    <p class="text-xs text-gray-600 mt-1">Multiple accounts from same IP detected</p>
+                                </div>
+                                <span class="text-xs text-gray-500">8 mins ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 mr-2 text-yellow-500"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        Detection Statistics
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Detection Accuracy</span>
+                            <span class="font-bold text-green-600">97.2%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">False Positive Rate</span>
+                            <span class="font-bold text-orange-600">2.8%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Avg Response Time</span>
+                            <span class="font-bold text-blue-600">3.4s</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Groups Detected/Day</span>
+                            <span class="font-bold text-purple-600">47</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-xl font-bold text-gray-900 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 mr-2 text-purple-500"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                    Advanced Group Betting Detection
+                </h2>
+                <div class="flex items-center space-x-4">
+                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">
+                        3 Active Groups
+                    </span>
+                    <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                        Multi-Market Detection
+                    </span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="border-2 border-red-200 rounded-lg p-6 bg-gradient-to-br from-red-50 to-orange-50">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-red-900">Group #GRP001</h3>
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+                                98% Risk
+                            </span>
+                            <span class="px-2 py-1 rounded text-xs font-bold bg-red-200 text-red-800">
+                                Active
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <p class="font-medium text-gray-700 mb-1">Coordinated Users:</p>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-white px-2 py-1 rounded text-xs border">CricketKing_77</span>
+                                <span class="bg-white px-2 py-1 rounded text-xs border">Mumbai_Bettor_92</span>
+                                <span class="bg-white px-2 py-1 rounded text-xs border">Chennai_Fan_55</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <p><span class="font-medium">Match:</span> IND_vs_PAK_ODI_2025_001</p>
+                                <p><span class="font-medium">Market:</span> Match Odds</p>
+                                <p><span class="font-medium">Amount:</span> ₹7500</p>
+                            </div>
+                            <div>
+                                <p><span class="font-medium">Time Gap:</span> 6 seconds</p>
+                                <p><span class="font-medium">Detection:</span> Same IP + Device</p>
+                                <p><span class="font-medium">When:</span> 15:23:45</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-3 rounded border">
+                            <p class="font-medium text-gray-700 mb-1">Technical Details:</p>
+                            <p class="text-xs"><span class="font-medium">IP:</span> 192.168.1.100</p>
+                            <p class="text-xs"><span class="font-medium">Device:</span> DEV_789456</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 flex space-x-2">
+                        <button class="flex-1 bg-red-600 text-white px-3 py-2 rounded text-sm hover:bg-red-700 font-medium">
+                            Investigate Now
+                        </button>
+                        <button class="flex-1 bg-orange-600 text-white px-3 py-2 rounded text-sm hover:bg-orange-700 font-medium">
+                            Flag All Users
+                        </button>
+                    </div>
+                </div>
+                <div class="border-2 border-red-200 rounded-lg p-6 bg-gradient-to-br from-red-50 to-orange-50">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-red-900">Group #GRP002</h3>
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+                                92% Risk
+                            </span>
+                            <span class="px-2 py-1 rounded text-xs font-bold bg-orange-200 text-orange-800">
+                                Under Review
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <p class="font-medium text-gray-700 mb-1">Coordinated Users:</p>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-white px-2 py-1 rounded text-xs border">Delhi_Pro_King</span>
+                                <span class="bg-white px-2 py-1 rounded text-xs border">KKR_Master_777</span>
+                                <span class="bg-white px-2 py-1 rounded text-xs border">RCB_Fan_2025</span>
+                                <span class="bg-white px-2 py-1 rounded text-xs border">CSK_Lover_99</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <p><span class="font-medium">Match:</span> MI_vs_RCB_IPL_2025_089</p>
+                                <p><span class="font-medium">Market:</span> Sessions</p>
+                                <p><span class="font-medium">Amount:</span> ₹4500</p>
+                            </div>
+                            <div>
+                                <p><span class="font-medium">Time Gap:</span> 4 seconds</p>
+                                <p><span class="font-medium">Detection:</span> Same Device ID</p>
+                                <p><span class="font-medium">When:</span> 15:18:12</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-3 rounded border">
+                            <p class="font-medium text-gray-700 mb-1">Technical Details:</p>
+                            <p class="text-xs"><span class="font-medium">IP:</span> Multiple IPs</p>
+                            <p class="text-xs"><span class="font-medium">Device:</span> DEV_456789</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 flex space-x-2">
+                        <button class="flex-1 bg-red-600 text-white px-3 py-2 rounded text-sm hover:bg-red-700 font-medium">
+                            Investigate Now
+                        </button>
+                        <button class="flex-1 bg-orange-600 text-white px-3 py-2 rounded text-sm hover:bg-orange-700 font-medium">
+                            Flag All Users
+                        </button>
+                    </div>
+                </div>
+                <div class="border-2 border-red-200 rounded-lg p-6 bg-gradient-to-br from-red-50 to-orange-50">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-red-900">Group #GRP003</h3>
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+                                85% Risk
+                            </span>
+                            <span class="px-2 py-1 rounded text-xs font-bold bg-yellow-200 text-yellow-800">
+                                Flagged
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3 text-sm">
+                        <div>
+                            <p class="font-medium text-gray-700 mb-1">Coordinated Users:</p>
+                            <div class="flex flex-wrap gap-1">
+                                <span class="bg-white px-2 py-1 rounded text-xs border">Pune_Bettor_33</span>
+                                <span class="bg-white px-2 py-1 rounded text-xs border">Hyderabad_King</span>
+                                <span class="bg-white px-2 py-1 rounded text-xs border">Bangalore_Pro</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <p><span class="font-medium">Match:</span> AUS_vs_ENG_TEST_2025_003</p>
+                                <p><span class="font-medium">Market:</span> Line Session</p>
+                                <p><span class="font-medium">Amount:</span> ₹6200</p>
+                            </div>
+                            <div>
+                                <p><span class="font-medium">Time Gap:</span> 8 seconds</p>
+                                <p><span class="font-medium">Detection:</span> Same IP Address</p>
+                                <p><span class="font-medium">When:</span> 15:12:33</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-3 rounded border">
+                            <p class="font-medium text-gray-700 mb-1">Technical Details:</p>
+                            <p class="text-xs"><span class="font-medium">IP:</span> 203.45.67.89</p>
+                            <p class="text-xs"><span class="font-medium">Device:</span> Multiple Devices</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 flex space-x-2">
+                        <button class="flex-1 bg-red-600 text-white px-3 py-2 rounded text-sm hover:bg-red-700 font-medium">
+                            Investigate Now
+                        </button>
+                        <button class="flex-1 bg-orange-600 text-white px-3 py-2 rounded text-sm hover:bg-orange-700 font-medium">
+                            Flag All Users
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 mr-2 text-green-500"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+                Multi-Category Timeline Analysis
+            </h2>
+            
+            <div class="mb-4 flex justify-center space-x-6">
+                <div class="flex items-center text-sm">
+                    <div class="w-4 h-4 rounded mr-2" style="background-color: #8B5CF6;"></div>
+                    <span>4,6,</span>
+                </div>
+                <div class="flex items-center text-sm">
+                    <div class="w-4 h-4 rounded mr-2" style="background-color: #EF4444;"></div>
+                    <span>Matching</span>
+                </div>
+                <div class="flex items-center text-sm">
+                    <div class="w-4 h-4 rounded mr-2" style="background-color: #F59E0B;"></div>
+                    <span>Snipping</span>
+                </div>
+                <div class="flex items-center text-sm">
+                    <div class="w-4 h-4 rounded mr-2" style="background-color: #10B981;"></div>
+                    <span>Major</span>
+                </div>
+                <div class="flex items-center text-sm">
+                    <div class="w-4 h-4 rounded mr-2" style="background-color: #EC4899;"></div>
+                    <span>Group</span>
+                </div>
+            </div>
+            
+            <div class="h-80 flex items-end justify-between space-x-2 px-4">
+                <div class="flex-1 flex flex-col items-center max-w-16">
+                    <div class="w-full space-y-0.5 flex flex-col-reverse">
+                        <div class="rounded-b" style="background-color: rgb(139, 92, 246); height: 75px;" title="Wicket Bets: 45"></div>
+                        <div style="background-color: rgb(239, 68, 68); height: 38.3333px;" title="Matching Bets: 23"></div>
+                        <div style="background-color: rgb(245, 158, 11); height: 20px;" title="Snipping Bets: 12"></div>
+                        <div style="background-color: rgb(16, 185, 129); height: 13.3333px;" title="Major Bets: 8"></div>
+                        <div class="rounded-t" style="background-color: rgb(236, 72, 153); height: 5px;" title="Group Betting: 3"></div>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 font-medium">12:00</p>
+                </div>
+                <div class="flex-1 flex flex-col items-center max-w-16">
+                    <div class="w-full space-y-0.5 flex flex-col-reverse">
+                        <div class="rounded-b" style="background-color: rgb(139, 92, 246); height: 111.667px;" title="Wicket Bets: 67"></div>
+                        <div style="background-color: rgb(239, 68, 68); height: 56.6667px;" title="Matching Bets: 34"></div>
+                        <div style="background-color: rgb(245, 158, 11); height: 30px;" title="Snipping Bets: 18"></div>
+                        <div style="background-color: rgb(16, 185, 129); height: 20px;" title="Major Bets: 12"></div>
+                        <div class="rounded-t" style="background-color: rgb(236, 72, 153); height: 8.33333px;" title="Group Betting: 5"></div>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 font-medium">13:00</p>
+                </div>
+                <div class="flex-1 flex flex-col items-center max-w-16">
+                    <div class="w-full space-y-0.5 flex flex-col-reverse">
+                        <div class="rounded-b" style="background-color: rgb(139, 92, 246); height: 148.333px;" title="Wicket Bets: 89"></div>
+                        <div style="background-color: rgb(239, 68, 68); height: 75px;" title="Matching Bets: 45"></div>
+                        <div style="background-color: rgb(245, 158, 11); height: 41.6667px;" title="Snipping Bets: 25"></div>
+                        <div style="background-color: rgb(16, 185, 129); height: 30px;" title="Major Bets: 18"></div>
+                        <div class="rounded-t" style="background-color: rgb(236, 72, 153); height: 13.3333px;" title="Group Betting: 8"></div>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 font-medium">14:00</p>
+                </div>
+                <div class="flex-1 flex flex-col items-center max-w-16">
+                    <div class="w-full space-y-0.5 flex flex-col-reverse">
+                        <div class="rounded-b" style="background-color: rgb(139, 92, 246); height: 205px;" title="Wicket Bets: 123"></div>
+                        <div style="background-color: rgb(239, 68, 68); height: 111.667px;" title="Matching Bets: 67"></div>
+                        <div style="background-color: rgb(245, 158, 11); height: 56.6667px;" title="Snipping Bets: 34"></div>
+                        <div style="background-color: rgb(16, 185, 129); height: 38.3333px;" title="Major Bets: 23"></div>
+                        <div class="rounded-t" style="background-color: rgb(236, 72, 153); height: 20px;" title="Group Betting: 12"></div>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 font-medium">15:00</p>
+                </div>
+                <div class="flex-1 flex flex-col items-center max-w-16">
+                    <div class="w-full space-y-0.5 flex flex-col-reverse">
+                        <div class="rounded-b" style="background-color: rgb(139, 92, 246); height: 163.333px;" title="Wicket Bets: 98"></div>
+                        <div style="background-color: rgb(239, 68, 68); height: 93.3333px;" title="Matching Bets: 56"></div>
+                        <div style="background-color: rgb(245, 158, 11); height: 46.6667px;" title="Snipping Bets: 28"></div>
+                        <div style="background-color: rgb(16, 185, 129); height: 25px;" title="Major Bets: 15"></div>
+                        <div class="rounded-t" style="background-color: rgb(236, 72, 153); height: 15px;" title="Group Betting: 9"></div>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 font-medium">16:00</p>
+                </div>
+                <div class="flex-1 flex flex-col items-center max-w-16">
+                    <div class="w-full space-y-0.5 flex flex-col-reverse">
+                        <div class="rounded-b" style="background-color: rgb(139, 92, 246); height: 130px;" title="Wicket Bets: 78"></div>
+                        <div style="background-color: rgb(239, 68, 68); height: 70px;" title="Matching Bets: 42"></div>
+                        <div style="background-color: rgb(245, 158, 11); height: 35px;" title="Snipping Bets: 21"></div>
+                        <div style="background-color: rgb(16, 185, 129); height: 18.3333px;" title="Major Bets: 11"></div>
+                        <div class="rounded-t" style="background-color: rgb(236, 72, 153); height: 10px;" title="Group Betting: 6"></div>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-2 font-medium">17:00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
